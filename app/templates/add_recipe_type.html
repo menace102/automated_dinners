@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+        <br>
+        <form action="{{ url_for('submit_recipetype') }}" method=post class=submit-recipetype>
+            <dl>
+                <dt>Recipe Type:
+                <dd><input type=text size=30 name=name>
+                <dd><input type=submit value="Store recipe type">
+            </dl>
+        </form>
+        
+{% endblock %}

@@ -1,0 +1,25 @@
+<!doctype html>
+<title>Automated Dinners</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <h1>Automated Dinners</h1>
+    <form method="get" action="/">
+      <button type ="submit" style="float: left">Home</button>
+    </form>
+    <form method="get" action="/add_recipe">
+      <button type ="submit" style="float: left">Add Recipe</button>
+    </form>
+    <form method="get" action="/add_recipe_type">
+      <button type ="submit" style="float: left">Add Recipe Type</button>
+    </form>
+    <form method="get" action="/add_ingredient">
+      <button type ="submit" style="float: left">Add Ingredient</button>
+    </form>
+      
+
+    {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }} </div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>
+<br>

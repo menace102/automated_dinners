@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+ 
+    <br>
+	<h3>{{ recipe_details.recipename }}</h3>
+	{{recipe_details.recipetypename}}
+    <ul class=recipe_ingredients>
+    {% for ing in recipe_ingredients %}
+    	<li> {{ing.recipeunits}} {{ing.recipeunittype}} {{ing.ingredientname}}
+    {% endfor %}
+    </ul>
+    {{recipe_details.instructions}}
+{% endblock %}
