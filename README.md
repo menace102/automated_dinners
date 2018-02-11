@@ -34,4 +34,9 @@ Command to initialize the database
 
 Command to stock the database if it is empty:
 
-'flask stockdb'
+
+`flask stockdb`
+
+Run the website!
+
+`flask run`
