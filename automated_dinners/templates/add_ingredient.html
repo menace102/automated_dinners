@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+        <b>Parse details from amazon:</b>
+        <form action="{{ url_for('parse_ingredient') }}" method=post class=parse-ingredient>
+            <dl>
+                <dt>Amazon Address:
+                <dd><input type=text size=30 name=address>
+                <dd><input type=submit value="Parse Ingredient from Amazon">
+            </dl>
+        </form>
+
+        <br>
+        <b> Or enter ingredient information manually:</b>
+        <form action="{{ url_for('submit_ingredient') }}" method=post class=submit-ingredient>
+            <dl>
+                <dt>Ingredient Name:
+                <dd><input type=text size=30 name=name, value="{{ingredient_dict['name']}}">
+            	<dt>Amazon Address:
+                <dd><input type=text size=30 name=amazonid, value="{{ingredient_dict['amazonid']}}">
+            	<dt>Units:
+                <dd><input type=text size=30 name=units, value="{{ingredient_dict['units']}}"=>
+                <dt>Unit Type:
+                <dd><input type=text size=30 name=unit_type, value="{{ingredient_dict['unittype']}}">
+                <dt>Price:
+                <dd><input type=text size=30 name=price, value="{{ingredient_dict['price']}}">
+                <dd><input type=submit value="Store ingredient">
+            </dl>
+        </form>
+        
+{% endblock %}

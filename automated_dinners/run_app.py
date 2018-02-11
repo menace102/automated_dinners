@@ -2,7 +2,10 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from . import app
+from .scrape_amazon import parse_ingredient_from_amazon
 
 import pdb
 DEBUG = 1
@@ -235,8 +238,26 @@ def submit_recipetype():
 # INGREDIENT
 
 @app.route('/add_ingredient')
-def add_ingredient():
-    return render_template('add_ingredient.html')
+def add_ingredient_noargs():
+    return render_template('add_ingredient.html', ingredient_dict={})
+
+
+@app.route('/add_ingredient/<ingredient_dict>')
+def add_ingredient(ingredient_dict):
+    return render_template('add_ingredient.html', ingredient_dict=ingredient_dict)
+
+@app.route('/parse_ingredient', methods=['POST'])
+def parse_ingredient():
+    print("got into parse_ingredient")
+    driver = webdriver.Chrome()
+    ingredient_dict = parse_ingredient_from_amazon(driver, request.form['address'])
+    driver.close()
+    print(ingredient_dict)
+    if len(ingredient_dict) == 0:
+        flash("Error parsing Amazon page. Check your url: {}".format(request.form['address']))
+    else:
+        flash("Here's what I found on Amazon")
+    return render_template('add_ingredient.html', ingredient_dict=ingredient_dict)
 
 @app.route('/submit_ingredient', methods=['POST'])
 def submit_ingredient():
