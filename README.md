@@ -4,9 +4,7 @@
 
 ### Set up environment
 
-Install miniconda
-
-https://conda.io/miniconda.html
+Install miniconda: https://conda.io/miniconda.html
 
 Create an environment
 
@@ -16,7 +14,9 @@ Activate the environment
 
 `source activate auto_dinners`
 
-<Insert command for installing requirements.txt or setup.py>
+Install the dependencies
+
+`pip install -e .`
 
 ### Running the application
 
