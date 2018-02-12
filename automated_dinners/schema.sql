@@ -16,10 +16,10 @@ drop table if exists ingredient;
 create table ingredient (
     id integer primary key autoincrement,
     name integer not null,
-    amazonid text not null,
+    amazonid text,
     unittypeid integer not null,
     units real not null,
-    price real not null,
+    price real,
     activeyn integer not null
 );
 

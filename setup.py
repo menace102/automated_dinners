@@ -12,6 +12,7 @@ setup(name='automated_dinners',
         'flask',
         # 'sqlite3',
         'selenium',
+        'flask-WTF'
         ],
     zip_safe=False
     )
