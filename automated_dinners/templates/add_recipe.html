@@ -3,20 +3,20 @@
         <form action="{{ url_for('submit_recipe') }}" method=post class=submit-recipe>
             <dl>
                 <dt>Recipe Name:
-                <dd><input type=text size=30 name=name, value="{{recipe_dict['name']}}">
+                <dd><input type=text size=30 name=name value="{{recipe_parser.name}}">
                 
                 <dt>Recipe Type:
                     <select name="recipetype" width="250px">
                         {% for x in recipetypes %}
-                            <option value="{{ x }}"{% if x == recipe_dict['recipetype'] %} SELECTED{% endif %}>{{ x }}</option>
+                            <option value="{{ x }}"{% if x == recipe_parser.recipetype %} SELECTED{% endif %}>{{ x }}</option>
                         {% endfor %}
                     </select>
                 
                 <dt>Ingredients:
-                <dd><textarea name=ingredients rows=10 cols=50>{{recipe_dict['ingredients']}}</textarea>
+                <dd><textarea name=ingredients rows=10 cols=70>{{recipe_parser.get_ingredient_verification_text()}}</textarea>
 
                 <dt>Instructions:
-                <dd><textarea name=instructions rows=20 cols=50>{{recipe_dict['instructions']}}</textarea>
+                <dd><textarea name=instructions rows=20 cols=70>{{recipe_parser.instructions_text.get(return_if_not_verified='', override=True)}}</textarea>
                 
                 <dd><input type=submit value="Store recipe">
             </dl>

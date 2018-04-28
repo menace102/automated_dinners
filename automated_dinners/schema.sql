@@ -47,6 +47,13 @@ create table unittype (
     name integer not null
 );
 
+drop table if exists altunittypespelling;
+create table altunittypespelling (
+    id integer primary key autoincrement,
+    unittypeid integer not null,
+    altspelling text not null
+);
+
 -- theres a syntax error somewhere in here
 -- drop table if exists order;
 -- create table order (

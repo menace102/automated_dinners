@@ -22,8 +22,18 @@ Optional: turn on debug mode. This makes code changes to effect without having t
 
 `export FLASK_DEBUG=1`
 
+Alternatively, if you have an `instance/config.sh` set up, run `source instance/config.sh`. 
+
 Command to initialize the database: `flask initdb`
 
 Command to stock the database if it is empty: `flask stockdb`
 
 Run the website! `flask run`
+
+### Querying the Database on the command line
+
+`sqlite3 automated_dinners/automated_dinners.db`
+
+`.mode column`
+
+[sqlite3 reference](https://www.sqlite.org/cli.html)
